@@ -1,4 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Web.Script.Serialization;
+using API.API.BC.Modelos;
+using API.API.BW;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers {
@@ -9,7 +12,16 @@ namespace API.Controllers {
         // GET api/values
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get() {
-            return new string[] { "value1", "value2" };
+            FlujoObtenerPreguntas flujo;
+            List<Pregunta> preguntas;
+            string preguntasEnJSon;
+            JavaScriptSerializer convertidorJSon = new JavaScriptSerializer();
+
+            flujo  = new FlujoObtenerPreguntas();
+            preguntas = flujo.ObtienePregunta();
+            preguntasEnJSon = convertidorJSon.Serialize(preguntas);
+
+            return new string[] { "preguntasEnJSon" };
         }
 
         // GET api/values/5
