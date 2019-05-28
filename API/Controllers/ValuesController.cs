@@ -14,14 +14,12 @@ namespace API.Controllers {
         public ActionResult<IEnumerable<string>> Get() {
             FlujoObtenerPreguntas flujo;
             List<Pregunta> preguntas;
-            string preguntasEnJSon;
-            JavaScriptSerializer convertidorJSon = new JavaScriptSerializer();
 
             flujo  = new FlujoObtenerPreguntas();
             preguntas = flujo.ObtienePregunta();
-            preguntasEnJSon = convertidorJSon.Serialize(preguntas);
 
-            return new string[] { "preguntasEnJSon" };
+            //return new string[] { "preguntasEnJSon" };
+            return new JsonResult(preguntas);
         }
 
         // GET api/values/5
