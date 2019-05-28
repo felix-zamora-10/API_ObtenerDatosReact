@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Web.Script.Serialization;
 using API.API.BC.Modelos;
 using API.API.BW;
 using Microsoft.AspNetCore.Mvc;
